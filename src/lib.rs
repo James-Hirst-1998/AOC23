@@ -74,10 +74,9 @@ pub trait Solution {
 
 pub fn solve_day(day: &i32, include_time: bool) {
     match day {
-        0 => day00::Day00::solve(include_str!("../inputs/0"), include_time),
         1 => day01::Day01::solve(include_str!("../inputs/1"), include_time),
         2 => day02::Day02::solve(include_str!("../inputs/2"), include_time),
-        3 => day03::Day03::solve(include_str!("../inputs/3"), include_time),
+        3 => day03::Day03::solve(include_str!("../inputs/3.txt"), include_time),
         4 => day04::Day04::solve(include_str!("../inputs/4"), include_time),
         5 => day05::Day05::solve(include_str!("../inputs/5"), include_time),
         6 => day06::Day06::solve(include_str!("../inputs/6"), include_time),
