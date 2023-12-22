@@ -107,10 +107,6 @@ impl Solution for Day08 {
     type ParsedInput = String;
 
     fn parse_input(input_lines: &str) -> Self::ParsedInput {
-        // Change the return type of this function by editing the ParsedInput type above.
-        // You can skip this and pass the raw string to each part.
-        // Alternatively, you can parse the input here, either working on the same mutable struct
-        // in parts one and two or passing a tuple with the data required for each part.
         input_lines.to_string()
     }
 

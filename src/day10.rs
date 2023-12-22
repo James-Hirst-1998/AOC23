@@ -147,10 +147,6 @@ impl Solution for Day10 {
     type ParsedInput = String;
 
     fn parse_input(input_lines: &str) -> Self::ParsedInput {
-        // Change the return type of this function by editing the ParsedInput type above.
-        // You can skip this and pass the raw string to each part.
-        // Alternatively, you can parse the input here, either working on the same mutable struct
-        // in parts one and two or passing a tuple with the data required for each part.
         input_lines.to_string()
     }
 
@@ -173,7 +169,7 @@ mod tests {
     fn check_day10_part1_case1() {
         assert_eq!(
             Day10::solve_part_one(
-"7-F7-
+                "7-F7-
 .FJ|7
 SJLL7
 |F--J
@@ -187,7 +183,7 @@ LJ.LJ"
     fn check_day10_part2_case1() {
         assert_eq!(
             Day10::solve_part_two(
-".F----7F7F7F7F-7....
+                ".F----7F7F7F7F-7....
 .|F--7||||||||FJ....
 .||.FJ||||||||L7....
 FJL7L7LJLJ||LJ.L-7..

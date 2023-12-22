@@ -133,10 +133,6 @@ impl Solution for Day03 {
     type ParsedInput = String;
 
     fn parse_input(input_lines: &str) -> Self::ParsedInput {
-        // Change the return type of this function by editing the ParsedInput type above.
-        // You can skip this and pass the raw string to each part.
-        // Alternatively, you can parse the input here, either working on the same mutable struct
-        // in parts one and two or passing a tuple with the data required for each part.
         let contents = input_lines.replace(".", "a"); // update .'s so can check if alphanumeric
         contents.to_string()
     }

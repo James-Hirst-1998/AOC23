@@ -175,10 +175,6 @@ impl Solution for Day07 {
     type ParsedInput = String;
 
     fn parse_input(input_lines: &str) -> Self::ParsedInput {
-        // Change the return type of this function by editing the ParsedInput type above.
-        // You can skip this and pass the raw string to each part.
-        // Alternatively, you can parse the input here, either working on the same mutable struct
-        // in parts one and two or passing a tuple with the data required for each part.
         input_lines.to_string()
     }
 
@@ -198,11 +194,10 @@ mod tests {
     use super::*;
 
     #[test]
-    // Test is currently broken?
     fn check_day07_both_case1() {
         assert_eq!(
             Day07::solve(
-"32T3K 765
+                "32T3K 765
 T55J5 684
 KK677 28
 KTJJT 220

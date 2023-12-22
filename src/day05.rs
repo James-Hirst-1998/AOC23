@@ -128,10 +128,6 @@ impl Solution for Day05 {
     type ParsedInput = String;
 
     fn parse_input(input_lines: &str) -> Self::ParsedInput {
-        // Change the return type of this function by editing the ParsedInput type above.
-        // You can skip this and pass the raw string to each part.
-        // Alternatively, you can parse the input here, either working on the same mutable struct
-        // in parts one and two or passing a tuple with the data required for each part.
         input_lines.to_string()
     }
 
@@ -154,11 +150,10 @@ impl Solution for Day05 {
 mod tests {
     use super::*;
     #[test]
-    // This test is currently broken
     fn check_day05_both_case1() {
         assert_eq!(
             Day05::solve(
-"seeds: 79 14 55 13
+                "seeds: 79 14 55 13
 
 seed-to-soil map:
 50 98 2
@@ -191,7 +186,7 @@ temperature-to-humidity map:
 humidity-to-location map:
 60 56 37
 56 93 4",
-false
+                false
             ),
             ("35".to_string(), "0".to_string())
         )

@@ -214,10 +214,6 @@ impl Solution for Day16 {
     type ParsedInput = String;
 
     fn parse_input(input_lines: &str) -> Self::ParsedInput {
-        // Change the return type of this function by editing the ParsedInput type above.
-        // You can skip this and pass the raw string to each part.
-        // Alternatively, you can parse the input here, either working on the same mutable struct
-        // in parts one and two or passing a tuple with the data required for each part.
         input_lines.to_string()
     }
 
@@ -227,9 +223,8 @@ impl Solution for Day16 {
     }
 
     fn part_two(_parsed_input: &mut Self::ParsedInput) -> String {
-        // let count = calculate_part_2(_parsed_input.clone());
-        // count.to_string()
-        0.to_string()
+        let count = calculate_part_2(_parsed_input.clone());
+        count.to_string()
     }
 }
 
@@ -238,11 +233,10 @@ mod tests {
     use super::*;
 
     #[test]
-    // Test currently broken
     fn check_day16_both_case1() {
         assert_eq!(
             Day16::solve(
-".|...\\....
+                ".|...\\....
 |.-.\\.....
 .....|-...
 ........|.
