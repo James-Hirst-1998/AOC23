@@ -8,10 +8,9 @@ pub struct Day06;
 fn multiply_possibilities(contents: String, multiple_races: bool) -> usize {
     let winning_distances_per_race: Vec<Vec<usize>>;
 
-    if multiple_races{
+    if multiple_races {
         winning_distances_per_race = find_winning_distances_per_race(contents);
-    }
-    else{
+    } else {
         winning_distances_per_race = find_winning_distances_if_one_race(contents);
     }
 
@@ -42,7 +41,7 @@ fn find_winning_distances_per_race(contents: String) -> Vec<Vec<usize>> {
                 let distance_record = race.parse().expect("Expected a positive integer");
                 distance_record_container.insert(race_number, distance_record);
             }
-            race_number +=1
+            race_number += 1
         }
         line_number += 1
     }
@@ -70,16 +69,19 @@ fn find_winning_distances_if_one_race(contents: String) -> Vec<Vec<usize>> {
         let line_without_prefix = line.split(":").last().unwrap_or("");
         let line_without_spaces = line_without_prefix.replace(" ", "");
         let race_number = 1;
-        
+
         if line_number == 1 {
-            let time: usize = line_without_spaces.parse().expect("Expected a positive integer");
+            let time: usize = line_without_spaces
+                .parse()
+                .expect("Expected a positive integer");
             time_container.insert(race_number, time);
-        }
-        else{
-            let distance_record: usize = line_without_spaces.parse().expect("Expected a positive integer");
+        } else {
+            let distance_record: usize = line_without_spaces
+                .parse()
+                .expect("Expected a positive integer");
             distance_record_container.insert(race_number, distance_record);
         }
-            
+
         line_number += 1
     }
 
@@ -134,7 +136,13 @@ mod tests {
 
     #[test]
     fn check_day06_both_case1() {
-        assert_eq!(Day06::solve("Time:      7  15   30
-        Distance:  9  40  200", false), ("288".to_string(), "71503".to_string()))
+        assert_eq!(
+            Day06::solve(
+                "Time:      7  15   30
+        Distance:  9  40  200",
+                false
+            ),
+            ("288".to_string(), "71503".to_string())
+        )
     }
 }

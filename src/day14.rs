@@ -50,11 +50,11 @@ fn calculate_final_load(
     let length_of_vec = load_vec.len();
     let half_length = length_of_vec / 2;
     let remainder_after_cycles = (number_of_cycles - cycles_completed) % half_length;
-    let final_load = load_vec[remainder_after_cycles-1];
+    let final_load = load_vec[remainder_after_cycles - 1];
     final_load
 }
 
-fn full_loop_exists(load_vec: &Vec<usize>) -> bool {    
+fn full_loop_exists(load_vec: &Vec<usize>) -> bool {
     let length_of_vec = load_vec.len();
     if length_of_vec == 0 {
         return false;
@@ -189,15 +189,21 @@ mod tests {
     #[test]
     // Test is currently broken
     fn check_day14_both_case1() {
-        assert_eq!(Day14::solve("O....#....
-        O.OO#....#
-        .....##...
-        OO.#O....O
-        .O.....O#.
-        O.#..O.#.#
-        ..O..#O..O
-        .......O..
-        #....###..
-        #OO..#....", false), ("136".to_string(), "64".to_string()))
+        assert_eq!(
+            Day14::solve(
+"O....#....
+O.OO#....#
+.....##...
+OO.#O....O
+.O.....O#.
+O.#..O.#.#
+..O..#O..O
+.......O..
+#....###..
+#OO..#....",
+                false
+            ),
+            ("136".to_string(), "64".to_string())
+        )
     }
 }

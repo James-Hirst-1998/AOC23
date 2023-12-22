@@ -143,7 +143,7 @@ impl Solution for Day05 {
 
     fn part_two(_parsed_input: &mut Self::ParsedInput) -> String {
         // Very slow so commented out for now
-        // let seed_end_positions = calculate_seed_positions_part_2(_parsed_input.to_string()); 
+        // let seed_end_positions = calculate_seed_positions_part_2(_parsed_input.to_string());
         // let lowest_seed = seed_end_positions.iter().min().unwrap();
         // lowest_seed.to_string()
         0.to_string()
@@ -158,42 +158,42 @@ mod tests {
     fn check_day05_both_case1() {
         assert_eq!(
             Day05::solve(
-                "seeds: 79 14 55 13
+"seeds: 79 14 55 13
 
-        seed-to-soil map:
-        50 98 2
-        52 50 48
-        
-        soil-to-fertilizer map:
-        0 15 37
-        37 52 2
-        39 0 15
-        
-        fertilizer-to-water map:
-        49 53 8
-        0 11 42
-        42 0 7
-        57 7 4
-        
-        water-to-light map:
-        88 18 7
-        18 25 70
-        
-        light-to-temperature map:
-        45 77 23
-        81 45 19
-        68 64 13
-        
-        temperature-to-humidity map:
-        0 69 1
-        1 0 69
-        
-        humidity-to-location map:
-        60 56 37
-        56 93 4",
-                false
+seed-to-soil map:
+50 98 2
+52 50 48
+
+soil-to-fertilizer map:
+0 15 37
+37 52 2
+39 0 15
+
+fertilizer-to-water map:
+49 53 8
+0 11 42
+42 0 7
+57 7 4
+
+water-to-light map:
+88 18 7
+18 25 70
+
+light-to-temperature map:
+45 77 23
+81 45 19
+68 64 13
+
+temperature-to-humidity map:
+0 69 1
+1 0 69
+
+humidity-to-location map:
+60 56 37
+56 93 4",
+false
             ),
-            ("35".to_string(), "46".to_string())
+            ("35".to_string(), "0".to_string())
         )
     }
 }

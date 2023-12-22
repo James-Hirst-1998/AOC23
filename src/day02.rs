@@ -8,8 +8,6 @@ pub struct Day02;
 fn sum_of_full_cube_lines(contents: String) -> i32 {
     let full_cube_lines = find_lines_with_possible_cubes(contents);
 
-    println!("{:?}", full_cube_lines);
-
     let mut sum_of_full_lines = 0;
     for id in full_cube_lines {
         sum_of_full_lines += id;
@@ -20,8 +18,6 @@ fn sum_of_full_cube_lines(contents: String) -> i32 {
 
 fn sum_of_power_set(contents: String) -> i32 {
     let full_cube_lines = find_power_set_of_min_cubes(contents);
-
-    println!("{:?}", full_cube_lines);
 
     let mut sum_of_power_set = 0;
     for id in full_cube_lines {

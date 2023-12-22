@@ -1,4 +1,4 @@
-use itertools::repeat_n;
+// use itertools::repeat_n;
 
 use crate::Solution;
 
@@ -7,8 +7,8 @@ pub struct Day12;
 
 fn calculate_part_1(contents: String) -> usize {
     let spring_maps = parse_input(contents);
-    let mut count = 0; 
-    for spring_map in spring_maps{
+    let mut count = 0;
+    for spring_map in spring_maps {
         count += spring_map.count_allowed_arrangement();
     }
     count
@@ -55,11 +55,11 @@ pub struct SpringMap {
     spring_records: String,
     spring_patterns: Vec<usize>,
     additional_spaces_allowed: usize,
-    line_number: usize,
+    // line_number: usize,
 }
 
 impl SpringMap {
-    fn new(spring_records: String, spring_patterns: Vec<usize>, index: usize) -> SpringMap {
+    fn new(spring_records: String, spring_patterns: Vec<usize>, _index: usize) -> SpringMap {
         let line_length = spring_records.len();
         let additional_spaces_allowed =
             line_length + 1 - spring_patterns.iter().sum::<usize>() - spring_patterns.len();
@@ -67,18 +67,18 @@ impl SpringMap {
             spring_records,
             spring_patterns,
             additional_spaces_allowed,
-            line_number: index,
+            // line_number: index,
         }
     }
 
-    fn multiply_spring_map_entries(&self, multiple_value: usize) -> SpringMap {
-        let new_string_records = vec![self.spring_records.as_str(); multiple_value].join("?");
-        let new_spring_patterns: Vec<usize> =
-            repeat_n(self.spring_patterns.clone(), multiple_value)
-                .flatten()
-                .collect();
-        SpringMap::new(new_string_records, new_spring_patterns, self.line_number)
-    }
+    // fn multiply_spring_map_entries(&self, multiple_value: usize) -> SpringMap {
+    //     let new_string_records = vec![self.spring_records.as_str(); multiple_value].join("?");
+    //     let new_spring_patterns: Vec<usize> =
+    //         repeat_n(self.spring_patterns.clone(), multiple_value)
+    //             .flatten()
+    //             .collect();
+    //     SpringMap::new(new_string_records, new_spring_patterns, self.line_number)
+    // }
 
     fn count_allowed_arrangement(&self) -> usize {
         let allowed_arrangements = self.find_allowed_arrangements();
@@ -99,7 +99,8 @@ impl SpringMap {
     fn find_all_possible_combinations_of_pattern(&self) -> Vec<String> {
         let mut possible_combinations = Vec::new();
         let number_of_space_entries = self.spring_patterns.len() + 1;
-        let space_combinations = self.find_all_space_combinations(number_of_space_entries, self.additional_spaces_allowed);
+        let space_combinations = self
+            .find_all_space_combinations(number_of_space_entries, self.additional_spaces_allowed);
         for space_combination in space_combinations {
             let arrangement = self.build_arrangement_from_empty_space(space_combination);
             possible_combinations.push(arrangement);
@@ -107,7 +108,11 @@ impl SpringMap {
         possible_combinations
     }
 
-    fn find_all_space_combinations(&self, number_of_space_entries: usize, additional_spaces_allowed: usize) -> Vec<Vec<usize>> {
+    fn find_all_space_combinations(
+        &self,
+        number_of_space_entries: usize,
+        additional_spaces_allowed: usize,
+    ) -> Vec<Vec<usize>> {
         let mut possible_combinations = Vec::new();
 
         if additional_spaces_allowed == 0 {
@@ -123,7 +128,6 @@ impl SpringMap {
                 let possible_combinations_end = self.find_all_space_combinations(
                     number_of_space_entries - 1,
                     additional_spaces_allowed - i,
-            
                 );
                 for combination in possible_combinations_end {
                     let combination = [vec![i], combination].concat();
@@ -132,7 +136,7 @@ impl SpringMap {
             }
         }
         possible_combinations
-        }
+    }
 
     fn build_arrangement_from_empty_space(&self, space_combination: Vec<usize>) -> String {
         let mut arrangement = String::new();
@@ -193,17 +197,21 @@ mod tests {
 
     #[test]
     fn check_day12_part1_case1() {
-        assert_eq!(Day12::solve_part_one("???.### 1,1,3
+        assert_eq!(
+            Day12::solve_part_one(
+                "???.### 1,1,3
         .??..??...?##. 1,1,3
         ?#?#?#?#?#?#?#? 1,3,1,6
         ????.#...#... 4,1,1
         ????.######..#####. 1,6,5
-        ?###???????? 3,2,1"), "21".to_string())
+        ?###???????? 3,2,1"
+            ),
+            "21".to_string()
+        )
     }
 
     #[test]
     fn check_day12_part2_case1() {
         assert_eq!(Day12::solve_part_two(""), "0".to_string())
     }
-
 }

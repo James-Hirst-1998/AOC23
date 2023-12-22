@@ -43,11 +43,15 @@ fn calculate_part_2(contents: String) -> usize {
     let width = contents.lines().next().unwrap().len();
     let height = contents.lines().count();
     let all_possible_starting_positions = find_all_possible_starting_positions(width, height);
-    println!("Number of starting positions: {:?}", all_possible_starting_positions.len());
+    println!(
+        "Number of starting positions: {:?}",
+        all_possible_starting_positions.len()
+    );
 
     let mut max_number_of_spaces_energized = 0;
     for (index, starting_position) in all_possible_starting_positions.iter().enumerate() {
-        let path_of_light = find_light_coords_hit(&grid_of_mirrors, vec![starting_position.clone()]);
+        let path_of_light =
+            find_light_coords_hit(&grid_of_mirrors, vec![starting_position.clone()]);
         let unique_coords = find_unique_coords(&path_of_light);
         let number_of_spaces_energized = unique_coords.len();
         println!("{}: {:?}", index, number_of_spaces_energized);
@@ -223,8 +227,9 @@ impl Solution for Day16 {
     }
 
     fn part_two(_parsed_input: &mut Self::ParsedInput) -> String {
-        let count = calculate_part_2(_parsed_input.clone());
-        count.to_string()
+        // let count = calculate_part_2(_parsed_input.clone());
+        // count.to_string()
+        0.to_string()
     }
 }
 
@@ -235,15 +240,21 @@ mod tests {
     #[test]
     // Test currently broken
     fn check_day16_both_case1() {
-        assert_eq!(Day16::solve(".|...\\....
-        |.-.\\.....
-        .....|-...
-        ........|.
-        ..........
-        .........\\
-        ..../.\\\\..
-        .-.-/..|..
-        .|....-|.\\
-        ..//.|....", false), ("46".to_string(), "51".to_string()))
+        assert_eq!(
+            Day16::solve(
+".|...\\....
+|.-.\\.....
+.....|-...
+........|.
+..........
+.........\\
+..../.\\\\..
+.-.-/..|..
+.|....-|.\\
+..//.|....",
+                false
+            ),
+            ("46".to_string(), "51".to_string())
+        )
     }
 }

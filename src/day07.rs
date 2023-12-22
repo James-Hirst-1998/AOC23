@@ -5,8 +5,7 @@ use crate::Solution;
 #[derive(Clone, Debug)]
 pub struct Day07;
 
-#[derive(PartialEq, Eq, Hash)]
-#[derive(Debug)]
+#[derive(PartialEq, Eq, Hash, Debug)]
 pub enum Category {
     FiveOfAKind,
     FourOfAKind,
@@ -86,7 +85,7 @@ impl Hand {
     }
 }
 
-fn sum_total_winnings(contents: String, joker:bool) -> u32 {
+fn sum_total_winnings(contents: String, joker: bool) -> u32 {
     let mut total_winnings = 0;
 
     let order_of_hands_bets: Vec<u32> = find_order_of_hands_bets(contents, joker);
@@ -97,7 +96,7 @@ fn sum_total_winnings(contents: String, joker:bool) -> u32 {
     total_winnings
 }
 
-fn find_order_of_hands_bets(contents: String, joker:bool) -> Vec<u32> {
+fn find_order_of_hands_bets(contents: String, joker: bool) -> Vec<u32> {
     let order_of_hands: Vec<Hand> = find_order_of_hands(contents, joker);
     let mut order_of_hands_bets: Vec<u32> = Vec::new();
     for hand in order_of_hands {
@@ -125,7 +124,7 @@ fn find_order_of_hands(contents: String, joker: bool) -> Vec<Hand> {
             order_of_hands.append(hands);
         }
     }
-    
+
     order_of_hands
 }
 
@@ -137,7 +136,13 @@ fn convert_input_to_hands(contents: String, joker: bool) -> Vec<Hand> {
         for c in cards.chars() {
             let digit: u32 = match c {
                 'T' => 10,
-                'J' => if !joker {11} else {1},
+                'J' => {
+                    if !joker {
+                        11
+                    } else {
+                        1
+                    }
+                }
                 'Q' => 12,
                 'K' => 13,
                 'A' => 14,
@@ -195,10 +200,16 @@ mod tests {
     #[test]
     // Test is currently broken?
     fn check_day07_both_case1() {
-        assert_eq!(Day07::solve("32T3K 765
-        T55J5 684
-        KK677 28
-        KTJJT 220
-        QQQJA 483", false), ("6440".to_string(), "5905".to_string()))
+        assert_eq!(
+            Day07::solve(
+"32T3K 765
+T55J5 684
+KK677 28
+KTJJT 220
+QQQJA 483",
+                false
+            ),
+            ("6440".to_string(), "5905".to_string())
+        )
     }
 }

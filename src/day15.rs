@@ -93,7 +93,6 @@ fn calculate_the_value_post_hash(input: &String) -> usize {
     result
 }
 
-
 impl Solution for Day15 {
     type ParsedInput = String;
 
@@ -122,6 +121,9 @@ mod tests {
 
     #[test]
     fn check_day15_both_case1() {
-        assert_eq!(Day15::solve("rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7", false), ("1320".to_string(), "145".to_string()))
+        assert_eq!(
+            Day15::solve("rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7", false),
+            ("1320".to_string(), "145".to_string())
+        )
     }
 }

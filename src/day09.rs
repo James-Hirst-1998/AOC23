@@ -94,8 +94,14 @@ mod tests {
 
     #[test]
     fn check_day09_both_case1() {
-        assert_eq!(Day09::solve("0 3 6 9 12 15
+        assert_eq!(
+            Day09::solve(
+                "0 3 6 9 12 15
         1 3 6 10 15 21
-        10 13 16 21 30 45", false), ("114".to_string(), "2".to_string()))
+        10 13 16 21 30 45",
+                false
+            ),
+            ("114".to_string(), "2".to_string())
+        )
     }
 }

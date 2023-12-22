@@ -1,6 +1,6 @@
-use std::collections::HashMap;
-use regex::Regex;
 use num_integer::lcm;
+use regex::Regex;
+use std::collections::HashMap;
 
 use crate::Solution;
 
@@ -38,8 +38,8 @@ fn calculate_part_2(contents: String) -> usize {
     let instructions = calculate_instructions(contents.clone());
     let map = calculate_map(contents.clone());
     let mut starting_positions = Vec::new();
-    for key in map.keys() { 
-        if key.ends_with("A"){
+    for key in map.keys() {
+        if key.ends_with("A") {
             starting_positions.push(key);
         }
     }
@@ -60,13 +60,12 @@ fn calculate_part_2(contents: String) -> usize {
             } else if instruction == 'L' {
                 new_position = &map.get(current_position).unwrap().0;
             }
-            
+
             // If a value hits the end of its loop then do not carry on finding its values
             if new_position.ends_with("Z") {
                 let new_places_moved = places_moved + 1;
-                looping_values.push(new_places_moved );
-            }
-            else {
+                looping_values.push(new_places_moved);
+            } else {
                 new_positions.push(new_position);
             }
         }
@@ -81,7 +80,7 @@ fn calculate_instructions(contents: String) -> String {
     contents.lines().next().unwrap().to_string()
 }
 
-fn lowest_common_multiple(values: Vec<usize>)-> usize{
+fn lowest_common_multiple(values: Vec<usize>) -> usize {
     values.iter().fold(1, |a, &b| lcm(a, b))
 }
 
@@ -103,7 +102,6 @@ fn calculate_map(contents: String) -> HashMap<String, (String, String)> {
     }
     map
 }
-
 
 impl Solution for Day08 {
     type ParsedInput = String;
@@ -133,16 +131,23 @@ mod tests {
 
     #[test]
     fn check_day08_part1_case1() {
-        assert_eq!(Day08::solve_part_one("LLR
+        assert_eq!(
+            Day08::solve_part_one(
+                "LLR
 
         AAA = (BBB, BBB)
         BBB = (AAA, ZZZ)
-        ZZZ = (ZZZ, ZZZ)"), "6".to_string())
+        ZZZ = (ZZZ, ZZZ)"
+            ),
+            "6".to_string()
+        )
     }
 
     #[test]
     fn check_day08_part2_case1() {
-        assert_eq!(Day08::solve_part_two("LR
+        assert_eq!(
+            Day08::solve_part_two(
+                "LR
 
         11A = (11B, XXX)
         11B = (XXX, 11Z)
@@ -151,6 +156,9 @@ mod tests {
         22B = (22C, 22C)
         22C = (22Z, 22Z)
         22Z = (22B, 22B)
-        XXX = (XXX, XXX)"), "6".to_string())
+        XXX = (XXX, XXX)"
+            ),
+            "6".to_string()
+        )
     }
 }

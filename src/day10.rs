@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use geo::{point, Contains, Coord, LineString};
+use std::collections::HashMap;
 
 use crate::Solution;
 
@@ -49,7 +49,6 @@ fn calculate_part_2(contents: String) -> usize {
 
 fn find_loop_of_pipe_coords(contents: &String) -> Vec<Coords> {
     let (map, start) = compute_map_of_places(&contents);
-    println!("Built map");
     let mut loop_of_coords = Vec::new();
     loop_of_coords.push(start);
     let first_direction = find_first_coords_which_touch_start(start, &map);
@@ -172,24 +171,34 @@ mod tests {
 
     #[test]
     fn check_day10_part1_case1() {
-        assert_eq!(Day10::solve_part_one("7-F7-
-        .FJ|7
-        SJLL7
-        |F--J
-        LJ.LJ"), "8".to_string())
+        assert_eq!(
+            Day10::solve_part_one(
+"7-F7-
+.FJ|7
+SJLL7
+|F--J
+LJ.LJ"
+            ),
+            "8".to_string()
+        )
     }
 
     #[test]
     fn check_day10_part2_case1() {
-        assert_eq!(Day10::solve_part_two(".F----7F7F7F7F-7....
-        .|F--7||||||||FJ....
-        .||.FJ||||||||L7....
-        FJL7L7LJLJ||LJ.L-7..
-        L--J.L7...LJS7F-7L7.
-        ....F-J..F7FJ|L7L7L7
-        ....L7.F7||L7|.L7L7|
-        .....|FJLJ|FJ|F7|.LJ
-        ....FJL-7.||.||||...
-        ....L---J.LJ.LJLJ..."), "8".to_string())
+        assert_eq!(
+            Day10::solve_part_two(
+".F----7F7F7F7F-7....
+.|F--7||||||||FJ....
+.||.FJ||||||||L7....
+FJL7L7LJLJ||LJ.L-7..
+L--J.L7...LJS7F-7L7.
+....F-J..F7FJ|L7L7L7
+....L7.F7||L7|.L7L7|
+.....|FJLJ|FJ|F7|.LJ
+....FJL-7.||.||||...
+....L---J.LJ.LJLJ..."
+            ),
+            "8".to_string()
+        )
     }
 }

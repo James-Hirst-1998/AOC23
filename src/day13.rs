@@ -38,7 +38,8 @@ fn sum_up_reflection_points(
 }
 
 fn find_reflection_points_of_all_mirrors(
-    valley_of_mirrors: &Vec<Vec<String>>, smudge_value: usize
+    valley_of_mirrors: &Vec<Vec<String>>,
+    smudge_value: usize,
 ) -> (Vec<usize>, Vec<usize>) {
     let mut row_reflection_points = Vec::new();
     let mut column_reflection_points = Vec::new();
@@ -48,7 +49,8 @@ fn find_reflection_points_of_all_mirrors(
             row_reflection_points.push(row_reflection_point);
         }
         let rotated_mirror = reflect_mirror_diagonally(mirror);
-        let column_reflection_point = find_reflection_point_in_mirror_rows(&rotated_mirror, &smudge_value);
+        let column_reflection_point =
+            find_reflection_point_in_mirror_rows(&rotated_mirror, &smudge_value);
         if column_reflection_point != 1000 {
             column_reflection_points.push(column_reflection_point);
         }
@@ -95,7 +97,7 @@ fn find_reflection_point_in_mirror_rows(mirror: &Vec<String>, smudge_value: &usi
 fn find_reflection_points_in_row(row: &String) -> Vec<usize> {
     let mut possible_reflection_points = Vec::new();
     let length_of_row = row.len();
-    for index in 0..length_of_row{
+    for index in 0..length_of_row {
         if index == 0 {
             continue;
         }
@@ -104,9 +106,9 @@ fn find_reflection_points_in_row(row: &String) -> Vec<usize> {
         // reversed. If it is then I want to add the index to the possible reflection points.
         let first_part: String;
         let second_part: String;
-        if index < (length_of_row / 2) +1 {
+        if index < (length_of_row / 2) + 1 {
             first_part = row[0..index].to_string();
-            second_part = row[index..index+first_part.len()].to_string();
+            second_part = row[index..index + first_part.len()].to_string();
         } else {
             first_part = row[index..length_of_row].to_string();
             second_part = row[index - first_part.len()..index].to_string();
@@ -162,20 +164,25 @@ mod tests {
     #[test]
     // test currently broken
     fn check_day13_part1_case1() {
-        assert_eq!(Day13::solve_part_one("#.##..##.
-        ..#.##.#.
-        ##......#
-        ##......#
-        ..#.##.#.
-        ..##..##.
-        #.#.##.#.
-        
-        #...##..#
-        #....#..#
-        ..##..###
-        #####.##.
-        #####.##.
-        ..##..###
-        #....#..#"), "405".to_string())
+        assert_eq!(
+            Day13::solve_part_one(
+"#.##..##.
+..#.##.#.
+##......#
+##......#
+..#.##.#.
+..##..##.
+#.#.##.#.
+
+#...##..#
+#....#..#
+..##..###
+#####.##.
+#####.##.
+..##..###
+#....#..#"
+            ),
+            "405".to_string()
+        )
     }
 }
