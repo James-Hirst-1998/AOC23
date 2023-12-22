@@ -158,7 +158,9 @@ mod tests {
 
     #[test]
     fn check_day03_both_case1() {
-        assert_eq!(Day03::solve("467..114..
+        assert_eq!(
+            Day03::solve(
+                "467..114..
         ...*......
         ..35..633.
         ......#...
@@ -167,6 +169,10 @@ mod tests {
         ..592.....
         ......755.
         ...$.*....
-        .664.598..", false), ("4361".to_string(), "467835".to_string()))
+        .664.598..",
+                false
+            ),
+            ("4361".to_string(), "467835".to_string())
+        )
     }
 }

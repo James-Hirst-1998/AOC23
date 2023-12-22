@@ -1,5 +1,7 @@
 use crate::Solution;
 
+// I originally did this in python so not included in this repo
+
 #[derive(Clone, Debug)]
 pub struct Day01;
 
