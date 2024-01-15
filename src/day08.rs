@@ -81,7 +81,7 @@ fn calculate_instructions(contents: String) -> String {
 }
 
 fn lowest_common_multiple(values: Vec<usize>) -> usize {
-    values.iter().fold(1, |a, &b| lcm(a, b))
+    values.iter().fold(1, |a, b| lcm(a, *b))
 }
 
 fn calculate_map(contents: String) -> HashMap<String, (String, String)> {

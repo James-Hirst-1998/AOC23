@@ -14,7 +14,7 @@ fn sum_lines(contents: String) -> i32 {
 }
 
 fn sum_scratchcards(contents: String) -> u32 {
-    let scratchcards: HashMap<u32, HashMap<&'static str, u32>> =
+    let scratchcards: HashMap<u32, HashMap<&str, u32>> =
         find_num_of_each_scratchcard(contents);
 
     let mut sum_of_scratchcards = 0;
